@@ -1,0 +1,10 @@
+FROM python:3.8
+
+ENV SRC_PATH=/workspaces/python-testing/cli
+ENV PIP_TARGET=/usr/local/share/pip-global
+ENV PYTHONPATH=${PYTHONPATH}:${PIP_TARGET}
+ENV PATH=${PATH}:${PIP_TARGET}/bin
+
+RUN apt-get update \
+    && apt-get -y install curl less zip unzip gzip groff git \
+    && pip --disable-pip-version-check --no-cache-dir install pylint pytest pytest-mock coverage
