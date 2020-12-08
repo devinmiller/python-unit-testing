@@ -2,12 +2,8 @@ from cli.command import Command
 from cli.resource import ExampleResource
 
 class ExampleCommand(Command):
-    root = Command.parser.add_parser('set', help='Manage values')
-    parser = root.add_subparsers(help='Supported actions', dest='set')
-
-    @classmethod
-    def build_command(cls, parser):
-        pass
+    parser = Command.subparser.add_parser('set', help='Manage values')
+    subparser = parser.add_subparsers(help='Supported actions', dest='set')
 
     def __init__(self):
         print('ExampleCommand __init__()')
